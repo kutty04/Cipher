@@ -1,0 +1,457 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #060913;
+  --bg2: #0b0f1e;
+  --bg3: #12192e;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-bright: rgba(0, 242, 254, 0.3);
+  --text: #f3f4f6;
+  --text-dim: #9ca3af;
+  --text-muted: #6b7280;
+  
+  /* Cyber Neon Accent Colors */
+  --accent: #00f2fe;
+  --accent-purple: #9d4edd;
+  --accent-glow: rgba(0, 242, 254, 0.15);
+  --accent-purple-glow: rgba(157, 78, 221, 0.15);
+  
+  --green: #00f5d4;
+  --green-dim: rgba(0, 245, 212, 0.12);
+  --red: #ff007f;
+  --red-dim: rgba(255, 0, 127, 0.12);
+  --yellow: #ffd166;
+  --yellow-dim: rgba(255, 209, 102, 0.12);
+  --blue: #4ea8de;
+  
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-ui: 'Outfit', sans-serif;
+  
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: radial-gradient(circle at 50% 50%, var(--bg2) 0%, var(--bg) 100%);
+  color: var(--text);
+  font-family: var(--font-ui);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* Background overlay gradient for premium feel */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 10% 20%, rgba(0, 242, 254, 0.03) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(157, 78, 221, 0.03) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.01);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: var(--transition);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Selection Color */
+::selection {
+  background: var(--accent-glow);
+  color: var(--accent);
+}
+
+/* Markdown styling adjustments */
+.markdown-body {
+  font-size: 15px;
+  color: var(--text-dim);
+}
+
+.markdown-body p {
+  margin-bottom: 16px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.markdown-body ul, .markdown-body ol {
+  margin-bottom: 16px;
+  padding-left: 20px;
+}
+
+.markdown-body li {
+  margin-bottom: 8px;
+  white-space: pre-wrap;
+}
+
+.markdown-body code:not(pre code) {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--accent);
+}
+
+.markdown-body pre {
+  margin: 20px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3 {
+  color: var(--text);
+  margin: 28px 0 14px 0;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Global Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.95); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Custom Micro-interactions */
+.premium-glow-hover {
+  transition: var(--transition);
+}
+.premium-glow-hover:hover {
+  box-shadow: 0 0 20px var(--accent-glow);
+  border-color: var(--accent);
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Coquette Theme (bows, cottagecore, pinks) ── */
+[data-theme="coquette"] {
+  --bg: #fff5f6;
+  --bg2: #ffe3e8;
+  --bg3: #ffd1dc;
+  --bg-sidebar: #ffe3e8;
+  --bg-header: #fff5f6;
+  --bg-input-panel: #fff5f6;
+  --bg-chat-input: #ffffff;
+  --bg-card: #fff0f2;
+  --border: #f8c8d2;
+  --border-bright: #ffb3c1;
+  --text: #4d232e;
+  --text-dim: #7a4654;
+  --text-muted: #a3727f;
+  
+  --accent: #ff6b8b;
+  --accent-purple: #ff85a2;
+  --accent-glow: rgba(255, 107, 139, 0.12);
+  --accent-purple-glow: rgba(255, 133, 162, 0.12);
+  
+  --green: #81b29a;
+  --green-dim: rgba(129, 178, 154, 0.15);
+  --red: #e07a5f;
+  --red-dim: rgba(224, 122, 95, 0.15);
+  --yellow: #f2cc8f;
+  --yellow-dim: rgba(242, 204, 143, 0.15);
+  --blue: #3d5a80;
+  
+  --font-ui: 'Georgia', serif;
+  background: radial-gradient(circle at 50% 50%, #fffbfb 0%, #ffe3e8 100%) !important;
+}
+[data-theme="coquette"] body::before {
+  background: radial-gradient(circle at 10% 20%, rgba(255, 107, 139, 0.05) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(255, 182, 193, 0.05) 0%, transparent 40%) !important;
+}
+
+/* ── Synthwave Neon Theme (retro cyberpunk, pinks/cyan) ── */
+[data-theme="synthwave"] {
+  --bg: #090014;
+  --bg2: #160029;
+  --bg3: #2d004d;
+  --bg-sidebar: #0f001c;
+  --bg-header: #120022;
+  --bg-input-panel: #0a0016;
+  --bg-chat-input: #1b0033;
+  --bg-card: rgba(255, 0, 127, 0.05);
+  --border: rgba(255, 0, 127, 0.35);
+  --border-bright: rgba(0, 242, 254, 0.6);
+  --text: #ffffff;
+  --text-dim: #d4e0ff;
+  --text-muted: #6b63a6;
+  
+  --accent: #ff007f;
+  --accent-purple: #00f2fe;
+  --accent-glow: rgba(255, 0, 127, 0.35);
+  --accent-purple-glow: rgba(0, 242, 254, 0.3);
+  
+  --green: #39ff14;
+  --green-dim: rgba(57, 255, 20, 0.15);
+  --red: #ff0055;
+  --red-dim: rgba(255, 0, 85, 0.15);
+  --yellow: #ffd300;
+  --yellow-dim: rgba(255, 211, 0, 0.15);
+  --blue: #00bfff;
+  
+  background: radial-gradient(circle at 50% 50%, #1a0033 0%, #090014 100%) !important;
+}
+[data-theme="synthwave"] body::before {
+  background: linear-gradient(rgba(255, 0, 127, 0.05) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255, 0, 127, 0.05) 1px, transparent 1px) !important;
+  background-size: 40px 40px !important;
+  opacity: 0.6;
+}
+
+/* ── Matrix Green Theme (retrotech terminal) ── */
+[data-theme="matrix"] {
+  --bg: #000000;
+  --bg2: #050505;
+  --bg3: #0c0c0c;
+  --bg-sidebar: #000000;
+  --bg-header: #050505;
+  --bg-input-panel: #000000;
+  --bg-chat-input: #080808;
+  --bg-card: #050505;
+  --border: #00bb00;
+  --border-bright: #00ff00;
+  --text: #00ff00;
+  --text-dim: #00dd00;
+  --text-muted: #005500;
+  
+  --accent: #00ff00;
+  --accent-purple: #00aa00;
+  --accent-glow: rgba(0, 255, 0, 0.2);
+  --accent-purple-glow: rgba(0, 170, 0, 0.2);
+  
+  --green: #00ff00;
+  --green-dim: rgba(0, 255, 0, 0.15);
+  --red: #ff3333;
+  --red-dim: rgba(255, 51, 51, 0.15);
+  --yellow: #ffff33;
+  --yellow-dim: rgba(255, 255, 51, 0.15);
+  --blue: #3333ff;
+  
+  --font-ui: 'Courier New', Courier, monospace;
+  --font-mono: 'Courier New', Courier, monospace;
+  background: #000000 !important;
+}
+[data-theme="matrix"] body::before {
+  background: linear-gradient(rgba(0, 255, 0, 0.02) 50%, rgba(0, 0, 0, 0.1) 50%),
+              linear-gradient(90deg, rgba(0, 255, 0, 0.02) 50%, rgba(0, 0, 0, 0.1) 50%) !important;
+  background-size: 4px 4px !important;
+}
+
+/* Custom styling adjust for theme transitions */
+body, div, input, textarea, button, span {
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  /* Sidebar: hidden by default, overlays when open */
+  .sidebar {
+    position: fixed !important;
+    left: -280px;
+    top: 0;
+    bottom: 0;
+    width: 260px !important;
+    z-index: 100 !important;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: none !important;
+  }
+  .sidebar.open {
+    left: 0 !important;
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.5) !important;
+  }
+  .sidebar-overlay {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .sidebar-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Workspace panel: full-screen overlay on mobile */
+  .workspace-panel {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    z-index: 110 !important;
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  /* Header: compact layout */
+  .header-bar {
+    padding: 10px 12px !important;
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+  }
+  .header-left {
+    gap: 8px !important;
+  }
+  .header-left .app-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .header-left .app-title {
+    font-size: 14px !important;
+  }
+  .header-left .app-subtitle {
+    display: none !important;
+  }
+  .header-right {
+    gap: 6px !important;
+  }
+  .header-right .theme-label {
+    display: none !important;
+  }
+  .header-right .theme-select {
+    font-size: 10px !important;
+    padding: 3px 6px !important;
+  }
+  .header-right .workspace-btn,
+  .header-right .api-status-btn,
+  .header-right .connection-pill {
+    font-size: 10px !important;
+    padding: 3px 8px !important;
+  }
+  .header-right .workspace-btn-text,
+  .header-right .api-status-btn-text {
+    display: none !important;
+  }
+
+  /* Hamburger button: visible on mobile */
+  .hamburger-btn {
+    display: flex !important;
+  }
+
+  /* Messages area */
+  .messages-container {
+    padding: 16px 12px !important;
+    padding-bottom: 40px !important;
+  }
+
+  /* Welcome screen */
+  .welcome-title {
+    font-size: 18px !important;
+  }
+  .welcome-subtitle {
+    font-size: 13px !important;
+  }
+  .welcome-badges {
+    gap: 6px !important;
+  }
+  .welcome-badges span {
+    font-size: 11px !important;
+    padding: 4px 10px !important;
+  }
+
+  /* Chat input */
+  .chat-input-container {
+    padding: 12px !important;
+  }
+
+  /* Fallback notification */
+  .fallback-banner {
+    right: 10px !important;
+    left: 10px !important;
+    max-width: none !important;
+    font-size: 11px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-right .theme-select,
+  .header-right .workspace-btn,
+  .header-right .api-status-btn {
+    padding: 2px 6px !important;
+    font-size: 9px !important;
+  }
+  .header-right .connection-pill {
+    padding: 2px 6px !important;
+    font-size: 9px !important;
+  }
+  .welcome-title {
+    font-size: 16px !important;
+  }
+}
+
+/* ─── Sidebar collapse / slide animation ────────────────────────────────── */
+.sidebar {
+  transition: width 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+              min-width 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.2s ease,
+              transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  min-width: 260px;
+}
+
+.sidebar.collapsed {
+  width: 0 !important;
+  min-width: 0 !important;
+  opacity: 0;
+  pointer-events: none;
+  border-right: none !important;
+}
+
+/* Sidebar toggle button */
+.sidebar-toggle-btn:hover {
+  background: var(--accent-glow) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}

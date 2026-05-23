@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <script>
+    const originalLog = console.log;
+    const originalError = console.error;
+    
+    async function sendToBackend(type, args) {
+      try {
+        await fetch('http://localhost:5001/api/debug/log', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            type, 
+            msg: args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ') 
+          })
+        });
+      } catch(e) {}
+    }
+    
+    console.log = (...args) => {
+      originalLog(...args);
+      sendToBackend('log', args);
+    };
+    
+    console.error = (...args) => {
+      originalError(...args);
+      sendToBackend('error', args);
+    };
+    
+    window.addEventListener('error', (e) => {
+      sendToBackend('uncaught-error', [e.message, e.filename, e.lineno]);
+    });
+  </script>
+
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cipher — AI Coding Agent</title>
+    <meta name="description" content="Cipher — Your AI-powered coding agent. Debug errors, explain code, and get fixes instantly." />
+    <!-- Premium fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
