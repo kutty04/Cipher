@@ -16,6 +16,7 @@ const adapter = new PrismaPg(pool);
 export const prisma = new PrismaClient({ adapter });
 
 const app = express();
+app.set('trust proxy', 1);
 
 app.use(helmet({ frameguard: false, contentSecurityPolicy: false }));
 app.use(cors({

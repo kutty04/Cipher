@@ -27,4 +27,4 @@ EXPOSE 7860
 ENV PORT=7860
 
 # Start the application
-CMD ["node", "src/server.js"]
+CMD ["sh", "-c", "npx prisma db push && node src/server.js"]
