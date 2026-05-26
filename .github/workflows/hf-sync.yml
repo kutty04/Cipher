@@ -1,4 +1,4 @@
-﻿name: Sync to Hugging Face Spaces
+name: Sync to Hugging Face Spaces
 on:
   push:
     branches: [main]
@@ -18,4 +18,4 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git push --force https://kutty04:$HF_TOKEN@huggingface.co/spaces/kutty04/cipher-backend main
+          git push --force https://Maddy018:$HF_TOKEN@huggingface.co/spaces/Maddy018/cipher-backend main
