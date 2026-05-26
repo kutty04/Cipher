@@ -4,8 +4,9 @@ FROM node:20-alpine
 # Set working directory
 WORKDIR /app
 
-# Copy package files and Prisma schema
+# Copy package files, Prisma schema, and Prisma 7 config
 COPY backend/package*.json ./backend/
+COPY backend/prisma.config.js ./backend/
 COPY backend/prisma ./backend/prisma/
 
 # Install dependencies in the backend directory
