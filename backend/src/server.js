@@ -17,7 +17,7 @@ export const prisma = new PrismaClient({ adapter });
 
 const app = express();
 
-app.use(helmet());
+app.use(helmet({ frameguard: false, contentSecurityPolicy: false }));
 app.use(cors({
   origin: process.env.FRONTEND_URL || '*',
   methods: ['GET', 'POST'],
@@ -138,6 +138,6 @@ app.post('/api/debug/log', express.json(), (req, res) => {
   res.sendStatus(200);
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`🤖 Groq AI Agent running on port ${PORT}`);
 });
