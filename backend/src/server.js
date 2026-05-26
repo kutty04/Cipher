@@ -32,6 +32,19 @@ const limiter = rateLimit({
 });
 app.use('/api/agent', limiter);
 
+app.get('/', (_req, res) => {
+  res.json({
+    status: 'ok',
+    service: 'Cipher AI Agent Backend API',
+    version: '1.0.0',
+    endpoints: {
+      health: '/api/health',
+      sessions: '/api/sessions',
+      status: '/api/agent/status'
+    }
+  });
+});
+
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
